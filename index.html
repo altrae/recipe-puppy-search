@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Recipe Fetcher</title>
+    <meta name="viewport" width="device-width,scale=1.0" />
+    <meta name="description" content="Recipe Fetcher" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <form id="recipe-fetch-form" method="get" class="form-example">
+        <div class="form-group my-3">
+            <input class="p-1 border rounded" type="text" name="q" id="name" size="50" placeholder="Find recipe (e.g. chicken, vegan, eggroll, pastry)" required />
+        </div>
+        <div class="form-submit">
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </div>
+    </form>
+    <div id="recipe-fetch-list" class="d-flex flex-wrap"></div>
+    <footer>
+        <span id="copyright">&copy; Aaron Dewberry 2019</span>
+    </footer>
+    <script src="dist/bundle.js"></script>
+</body>
+
+</html>

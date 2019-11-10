@@ -1,0 +1,34 @@
+{
+    "author": "Aaron Dewberry",
+    "name": "recipe-puppy",
+    "dependencies": {
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2"
+    },
+    "description": "Fetch and display recipes using recipe-puppy API.",
+    "devDependencies": {
+        "@babel/core": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-react": "^7.7.0",
+        "babel-cli": "^6.26.0",
+        "babelify": "^10.0.0",
+        "bootstrap": "^4.3.1",
+        "css-loader": "^3.2.0",
+        "jquery": "^3.4.1",
+        "node-sass": "^4.13.0",
+        "popper.js": "^1.16.0",
+        "sass-loader": "^8.0.0",
+        "style-loader": "^1.0.0",
+        "webpack": "^4.40.2",
+        "webpack-cli": "^3.3.9"
+    },
+    "license": "UNLICENSED",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/altrae/recipe-puppy.git"
+    },
+    "scripts": {
+        "build": "webpack"
+    },
+    "version": "1.0.0"
+}
