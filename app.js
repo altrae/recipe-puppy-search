@@ -7,9 +7,6 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // res.setHeader('Content-Type', 'text/html');
 
     const pathname = url.parse(req.url).pathname;
     const extension = pathname.split('.').pop();
@@ -63,7 +60,7 @@ const server = http.createServer((req, res) => {
         res.end(fileToLoad, 'binary');
     } else if (!isImage) {
         fileToLoad = fs.readFileSync(file, 'utf8');
-        res.writeHead(200, { 'Content-Type': contentType, 'Retry-After': 3600, });
+        res.writeHead(200, { 'Content-Type': contentType, 'Retry-After': 3600 });
         res.write(fileToLoad);
         res.end();
     }
