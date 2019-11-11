@@ -38,16 +38,19 @@ footer,
     right: .25em;
 }
 
-#recipe-fetch-form {}
+.btn-default {
+    background-color: #00008B;
+    color: white;
+
+    &:hover {
+        background-color: #00008BAA;
+        color: white;
+    }
+}
 
 #recipe-fetch-list {
-    h1 {
-        display: block;
-        text-align: center;
-    }
     img {
-        display: block;
-        margin: 1rem auto;
+        max-height: 80px;
         max-width: 100%;
     }
     p {

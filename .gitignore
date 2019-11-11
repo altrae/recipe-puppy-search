@@ -3,3 +3,4 @@
 *.txt
 !1.jpg
 node_modules
+*.iml

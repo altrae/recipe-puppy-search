@@ -15,15 +15,16 @@ export const getData = (url, selector) => {
             section.classList.add('container');
 
             const h1 = document.createElement('h1');
+            h1.classList.add('w-100', 'text-center');
             h1.textContent = `${data.title} Results`;
             section.insertAdjacentElement('beforebegin', h1);
 
-            console.log('data', data);
-
             const sortedRecipes = sortRecipeByTitle(data.results);
 
+            console.log(data);
+
             sortedRecipes.forEach(recipe => {
-                const { title, ingredients, href } = recipe;
+                const { title, ingredients, href, thumbnail } = recipe;
 
                 const card = document.createElement('div');
                 card.classList.add('card');
@@ -34,15 +35,29 @@ export const getData = (url, selector) => {
                 const p = document.createElement('p');
                 const ingredientsArray = ingredients.trim().split(',');
 
+                if (thumbnail) {
+                    fetch(proxyUrl + thumbnail, {'Retry-After': 3600})
+                        .then(response => {
+                            if (response.ok) {
+                                p.insertAdjacentHTML('afterbegin', `<img src="${thumbnail}" class="d-block mb-3 mx-auto" alt="${title}"/>`);
+                            } else {
+                                p.insertAdjacentHTML('afterbegin', `<img src="/images/utensils-icon.png" class="d-block mb-3 mx-auto" alt="${title}"/>`);
+                            }
+                        })
+                        .catch(err => console.debug(`Failed to fetch ${thumbnail} due to ${err}`));
+                } else {
+                    p.insertAdjacentHTML('afterbegin', `<img src="/images/utensils-icon.png" class="d-block mb-3 mx-auto" alt="${title}"/>`);
+                }
+
                 ingredientsArray.map((ingredient, index) => {
                     const a = document.createElement('a');
                     a.href = '#';
-                    
+
                     ingredient = ingredient.trim();
                     a.setAttribute('data-ingredient', ingredient);
                     a.textContent = ingredient;
                     p.appendChild(a);
-                    
+
                     const lastIngredient = ingredientsArray.length === index + 1;
                     if (!lastIngredient) {
                         a.insertAdjacentHTML('afterend', ', ');
@@ -71,7 +86,7 @@ export const getData = (url, selector) => {
                             const a = document.createElement('a');
                             a.href = href;
                             a.target = '_blank';
-                            a.classList.add('recipe-link', 'm-0', 'mt-3', 'd-block', 'text-right');
+                            a.classList.add('recipe-link', 'm-0', 'mt-3', 'd-block', 'text-center', 'btn', 'btn-default');
                             a.textContent = 'View Recipe';
                             p.appendChild(a);
                         }
