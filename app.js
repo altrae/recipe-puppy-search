@@ -58,7 +58,7 @@ const server = http.createServer((req, res) => {
         fileToLoad = fs.readFileSync(file);
         res.writeHead(200, { 'Content-Type': contentType, 'Retry-After': 3600 });
         res.end(fileToLoad, 'binary');
-    } else if (!isImage) {
+    } else {
         fileToLoad = fs.readFileSync(file, 'utf8');
         res.writeHead(200, { 'Content-Type': contentType, 'Retry-After': 3600 });
         res.write(fileToLoad);
